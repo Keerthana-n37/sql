@@ -158,6 +158,8 @@ drop table vendors;
 
 drop table transactions;
 
+show databases;
+
 
 
 

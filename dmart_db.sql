@@ -14,8 +14,11 @@ expiry_date date,
 product_code binary(10) unique not null,
 product_details text);
 
+drop table products;
+desc products;
+
 insert into products values
-(101,'oreo biscuits','oreo','groceries',20,1.0,'2026-01-27','2026-06-30','1010111','cream biscuit');
+(101,'oreo biscuits','oreo','groceries',20,1.0,'2026-01-27','2026-06-30','101011','cream biscuit');
 
 insert into products values
 (102,'lays chips','lays','groceries',30,2.5,'2025-02-15','2025-08-15','1010112','salted chips');
@@ -27,7 +30,7 @@ insert into products values
 (104,'smart watch','boat','electronics',2500,10.5,'2025-03-01','2029-03-01','1010114','bluetooth smart watch');
 
 insert into products values
-(105,'rice','basmathi','groceries',1200,10.5,'2025-01-01','2026-01-01','101011','rice with good quality'),
+(105,'rice','basmathi','groceries',1200,10.5,'2025-01-01','2026-01-01','1010115','rice with good quality'),
 (106,'tv','Samsung','electronics',45000,15.0,'2025-02-01','2028-02-01','1010110','Smart TV'),
 (107,'shirt','levis','clothes',1999,5.5,'2025-03-01','2027-03-01','101111','Cotton shirt'),
 (108,'wheat flour','aashirvaad','groceries',650,8.0,'2025-01-15','2025-12-15','1001111','healthy flour');
@@ -260,7 +263,7 @@ where order_status = 'pending';
 
 create table suppliers(
 supplier_name varchar(35) not null,
-company_name char(20),
+company_name char(40),
 supply_type enum('groceries','electronis','clothing','cosmetics'),
 company_address text,
 service_area set('rural','urban'),
@@ -271,7 +274,7 @@ license_year year,
 service_rating float);
 
 insert into suppliers values
-('ram','Tredend enterprise private ltd','groceries','bangalore','urban',100.5,500.0,'food',2022,4.5);
+('ram','Tred enterprise ltd','groceries','bangalore','urban',100.5,500.0,'food',2022,4.5);
 
 insert into suppliers values
 ('meena','dynamic clothing center','clothing','mysore','urban',200.0,800.0,'garments',2021,4.2);
@@ -344,7 +347,7 @@ where supplier_name = 'sneha';
 
 
 
-
+drop table suppliers;
 
 
 create table customer(
@@ -377,17 +380,17 @@ insert into customer values
 (7,'swathi','reddy','swathi@gmail.com',9876543216,'female','chennai',4.3,'regular',9876500006),
 (8,'manoj','naik','manoj@gmail.com',9876543217,'male','hyderabad',4.0,'regular',9876500007);
 
-insert into customer(customer_id,first_name,last_name,phone_number,gender)
-values(9,'deepak','kumar',9876543201,'male');
+insert into customer(customer_id,first_name,last_name,phone_number,email,gender)
+values(9,'deepak','kumar',9876543201,'deepak@gmail.com','male');
 
-insert into customer(customer_id,first_name,address,customer_type,product_rating)
-values(10,'anita','bangalore','regular',4.6);
+insert into customer(customer_id,first_name,address,email,customer_type,product_rating)
+values(10,'anita','bangalore','anita@gamil.com','regular',4.6);
 
 insert into customer(customer_id,first_name,email,alternate_phone_number)
 values(11,'rahul','rahul1@gmail.com',9876543202);
 
-insert into customer(customer_id,first_name,last_name,address,customer_type,gender)
-values(12,'sneha','sharma','mysore','wholesale','female');
+insert into customer(customer_id,first_name,last_name,address,email,customer_type,gender)
+values(12,'sneha','sharma','mysore','snehaa2gmail.com','wholesale','female');
 
 insert into customer(customer_id,first_name,last_name,email,gender,address,customer_type)
 values(13,'kavya','rao','kavya@gmail.com','female','maharastra','regular'),
@@ -427,3 +430,155 @@ delete from customer
 where customer_type ='regular';
 
 select * from customer;
+
+
+
+select product_name,price from products;
+
+select employee_name,salary from employee;
+
+select customer_name,total_amount from orders;
+
+select supplier_name,company_name from suppliers;
+
+select first_name,email from customer;
+
+
+
+
+select product_name as Product_name from products;
+
+select employee_name as Employee_name from employee;
+
+select total_amount as Amount from orders;
+
+select company_name as Company_name from suppliers;
+
+select first_name as Customer_Name from customer;
+
+
+
+
+select distinct category from products;
+
+select distinct department from employee;
+
+select distinct order_status from orders;
+
+select distinct supply_type from suppliers;
+
+select distinct gender from customer;
+
+
+
+select * from products where price > 1000;
+
+select * from employee where salary > 30000;
+
+select * from orders where total_amount > 2000;
+
+select * from suppliers where service_rating > 4.5;
+
+select * from customer where product_rating > 4.5;
+
+
+
+select * from products where price < 500;
+
+select * from employee where salary < 28000;
+
+select * from orders where total_amount < 1500;
+
+select * from suppliers where service_cost < 600;
+
+select * from customer where product_rating < 4.5;
+
+
+
+select * from products where price >= 1200;
+
+select * from employee where experience >= 5;
+
+select * from orders where total_amount >= 1800;
+
+select * from suppliers where service_rating >= 4.5;
+
+select * from customer where product_rating >= 4.6;
+
+
+
+select * from products where price <= 1000;
+
+select * from employee where salary <= 30000;
+
+select * from orders where total_amount <= 1800;
+
+select * from suppliers where service_cost <= 700;
+
+select * from customer where product_rating <= 4.5;
+
+
+
+
+select * from products where category='groceries';
+
+select * from employee where department='sales';
+
+select * from orders where order_status='delivered';
+
+select * from suppliers where supply_type='clothing';
+
+select * from customer where gender='female';
+
+
+
+
+select * from products where category!='electronics';
+
+select * from employee where department!='billing';
+
+select * from orders where order_status!='pending';
+
+select * from suppliers where supply_type!='groceries';
+
+select * from customer where gender!='male';
+
+
+
+
+select * from products where category='groceries' and price > 100;
+
+select * from employee where department='sales' and salary > 30000;
+
+select * from orders where order_status='delivered' and total_amount > 1000;
+
+select * from suppliers where supply_type='groceries' and service_rating > 4.0;
+
+select * from customer where gender='female' and product_rating > 4.0;
+
+
+
+
+select * from products where category='electronics' or category='clothes';
+
+select * from employee where department='billing' or department='sales';
+
+select * from orders where payment_mode='upi' or payment_mode='cash';
+
+select * from suppliers where service_area='urban' or service_area='rural';
+
+select * from customer where gender='male' or gender='female';
+
+
+
+
+
+select * from products where not category='groceries';
+
+select * from employee where not department='sales';
+
+select * from orders where not payment_mode='upi';
+
+select * from suppliers where not supply_type='cosmetics';
+
+select * from customer where not gender='female';

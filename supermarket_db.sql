@@ -35,3 +35,57 @@ insert into sold_products values
 (10, 'ice cream', 'frozen food', 200),
 (11, 'soft drink', 'beverages', 100),
 (12, 'detergent', 'cleaning', 250);
+
+
+select *
+from products
+cross join sold_products;
+
+select count(*)
+from products
+cross join sold_products;
+
+select *
+from products
+cross join sold_products
+where products.category = 'grocery';
+
+select *
+from products
+cross join sold_products
+where sold_products.category = 'snacks';
+
+select *
+from products
+cross join sold_products
+where products.product_id < 5;
+
+select *
+from products
+cross join sold_products
+where sold_products.price < 100;
+
+select *
+from products
+inner join sold_products
+where products.product_id = sold_products.product_id;
+
+select *
+from products
+inner join sold_products
+where products.product_name = sold_products.product_name;
+
+select *
+from products
+inner join sold_products
+where products.category = sold_products.category;
+
+select *
+from products
+inner join sold_products
+where products.product_id = sold_products.product_id and products.price > 100;
+
+select *
+from products
+inner join sold_products
+where products.product_id = sold_products.product_id and products.category = 'grocery';

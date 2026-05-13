@@ -185,3 +185,188 @@ select * from project where technology is not null;
 select * from project where project_name is not null;
 select * from project where budget is not null;
 select * from project where location is not null;
+
+
+
+select department,count(*) 
+from employee
+group by department;
+
+select city,count(*) 
+from employee
+group by city;
+
+select department,avg(salary) 
+from employee
+group by department;
+
+select city,sum(salary) 
+from employee
+group by city;
+
+select department,max(salary) 
+from employee
+group by department;
+
+select department,min(salary) 
+from employee
+group by department;
+
+select city,count(employee_id) 
+from employee
+group by city;
+
+select department,sum(salary)
+from employee
+group by department;
+
+select city,avg(salary) 
+from employee
+group by city;
+
+select department,count(employee_name) 
+from employee
+group by department;
+
+
+select technology,count(*) 
+from project
+group by technology;
+
+select location,count(*) 
+from project
+group by location;
+
+select technology,sum(budget) 
+from project
+group by technology;
+
+select location,avg(budget) 
+from project
+group by location;
+
+select technology,max(budget) 
+from project
+group by technology;
+
+select technology,min(budget) 
+from project
+group by technology;
+
+select location,sum(budget) 
+from project
+group by location;
+
+select technology,count(project_name)
+from project
+group by technology;
+
+select location,max(budget)
+from project
+group by location;
+
+select location,min(budget) 
+from project
+group by location;
+
+
+select department,count(*) 
+from employee
+group by department
+having count(*) > 1;
+
+select city,count(*)
+from employee
+group by city
+having count(*) >= 2;
+
+select department,avg(salary)
+from employee
+group by department
+having avg(salary) > 50000;
+
+select city,sum(salary) 
+from employee
+group by city
+having sum(salary) > 100000;
+
+select department,max(salary)
+from employee
+group by department
+having max(salary) > 70000;
+
+select department,min(salary) 
+from employee
+group by department
+having min(salary) < 45000;
+
+select city,count(employee_id) 
+from employee
+group by city
+having count(employee_id) > 1;
+
+select department,sum(salary) 
+from employee
+group by department
+having sum(salary) > 100000;
+
+select city,avg(salary) 
+from employee
+group by city
+having avg(salary) > 45000;
+
+select department,count(employee_name)
+from employee
+group by department
+having count(employee_name) >= 2;
+
+
+select technology,count(*) 
+from project
+group by technology
+having count(*) > 1;
+
+select location,count(*) 
+from project
+group by location
+having count(*) >= 2;
+
+select technology,sum(budget) 
+from project
+group by technology
+having sum(budget) > 1000000;
+
+select location,avg(budget) 
+from project
+group by location
+having avg(budget) > 500000;
+
+select technology,max(budget) 
+from project
+group by technology
+having max(budget) > 700000;
+
+select technology,min(budget) 
+from project
+group by technology
+having min(budget) < 500000;
+
+select location,sum(budget)
+from project
+group by location
+having sum(budget) > 800000;
+
+select technology,count(project_name) 
+from project
+group by technology
+having count(project_name) >= 2;
+
+select location,max(budget)
+from project
+group by location
+having max(budget) > 600000;
+
+select location,min(budget) 
+from project
+group by location
+having min(budget) < 400000;
